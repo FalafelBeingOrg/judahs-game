@@ -1,20 +1,50 @@
-[gd_scene load_steps=4 format=3 uid="uid://cad0utrnd3dum"]
+[gd_scene load_steps=9 format=3 uid="uid://cad0utrnd3dum"]
 
-[ext_resource type="Script" path="res://Player.gd" id="1_5wtgm"]
+[ext_resource type="Texture2D" uid="uid://jcjcq3ssymgo" path="res://bg.png" id="1_7gr2t"]
+[ext_resource type="Texture2D" uid="uid://m0x7c3bxtay0" path="res://walls.png" id="2_ri5on"]
+[ext_resource type="PackedScene" uid="uid://xgtbjnta0t7m" path="res://player.tscn" id="2_wv8ud"]
+[ext_resource type="Script" path="res://orbspawner.gd" id="4_m6vft"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_23xa6"]
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_4kufx"]
+vertices = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kbig4"]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_uxd4o"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q3rf8"]
+texture = ExtResource("2_ri5on")
+0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_uxd4o")
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4kufx")
+
+[sub_resource type="TileSet" id="TileSet_idqjy"]
+occlusion_layer_0/light_mask = 1
+physics_layer_0/collision_layer = 1
+navigation_layer_0/layers = 1
+custom_data_layer_0/name = ""
+custom_data_layer_0/type = 0
+sources/1 = SubResource("TileSetAtlasSource_q3rf8")
 
 [node name="Node2D" type="Node2D"]
+metadata/_edit_horizontal_guides_ = []
 
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7gr2t")
+offset = Vector2(576, 324)
+
+[node name="Player" parent="." instance=ExtResource("2_wv8ud")]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_idqjy")
+collision_animatable = true
+format = 2
+layer_0/tile_data = PackedInt32Array(1441838, 1, 0, 1507374, 1, 0, 1507373, 1, 0, 1572909, 1, 0, 1638444, 1, 0, 1703979, 1, 0, 1703978, 1, 0, 1769514, 1, 0, 1769513, 1, 0, 1769512, 1, 0, 1835048, 1, 0, 983085, 1, 0, 983084, 1, 0, 917548, 1, 0, 852012, 1, 0, 852011, 1, 0, 786475, 1, 0, 720939, 1, 0, 720938, 1, 0, 720937, 1, 0, 655400, 1, 0, 655399, 1, 0, 720935, 1, 0, 720934, 1, 0, 786469, 1, 0, 852005, 1, 0, 917541, 1, 0, 983077, 1, 0, 983078, 1, 0, 1048614, 1, 0, 1114150, 1, 0, 2097185, 1, 0, 2031649, 1, 0, 1966113, 1, 0, 1900576, 1, 0, 1835040, 1, 0, 1769504, 1, 0, 1769503, 1, 0, 1703967, 1, 0, 1703966, 1, 0, 1638430, 1, 0, 1638429, 1, 0, 1638428, 1, 0, 1572892, 1, 0, 1572891, 1, 0, 1507354, 1, 0, 1507353, 1, 0, 1441817, 1, 0, 1441816, 1, 0, 1376280, 1, 0, 1310744, 1, 0, 1245208, 1, 0, 1179672, 1, 0, 1179673, 1, 0, 1114137, 1, 0, 1048601, 1, 0, 1048602, 1, 0, 720925, 1, 0, 720924, 1, 0, 655387, 1, 0, 655386, 1, 0, 655385, 1, 0, 589848, 1, 0, 589847, 1, 0, 589846, 1, 0, 589845, 1, 0, 589844, 1, 0, 589843, 1, 0, 589842, 1, 0, 589841, 1, 0, 655377, 1, 0, 720913, 1, 0, 786449, 1, 0, 786448, 1, 0, 851984, 1, 0, 917520, 1, 0, 983056, 1, 0, 1048592, 1, 0, 1114128, 1, 0, 1179664, 1, 0, 1245200, 1, 0, 1310736, 1, 0, 1376272, 1, 0, 1441808, 1, 0, 1507344, 1, 0, 1572880, 1, 0, 1638416, 1, 0, 1703952, 1, 0, 2162714, 1, 0, 2162715, 1, 0, 2162716, 1, 0, 2228252, 1, 0, 2228253, 1, 0, 2228254, 1, 0, 2228255, 1, 0, 2293792, 1, 0, 2293793, 1, 0, 2293794, 1, 0, 2293795, 1, 0, 2359332, 1, 0, 2359333, 1, 0, 2359334, 1, 0, 2359335, 1, 0, 2359336, 1, 0, 2359337, 1, 0, 2293802, 1, 0, 2293803, 1, 0, 2293804, 1, 0, 2293805, 1, 0, 917570, 1, 0, 983106, 1, 0, 1048642, 1, 0, 1114178, 1, 0, 1179714, 1, 0, 1245250, 1, 0, 1310786, 1, 0, 1376321, 1, 0, 1441857, 1, 0, 1507393, 1, 0, 1572928, 1, 0, 1638464, 1, 0, 1704000, 1, 0, 1769536, 1, 0, 1835071, 1, 0, 1900607, 1, 0, 1966143, 1, 0, 2031679, 1, 0, 2097215, 1, 0, 2162751, 1, 0, 2228287, 1, 0, 2293823, 1, 0, 2359358, 1, 0, 2424894, 1, 0, 2490429, 1, 0, 2555965, 1, 0, 2555964, 1, 0, 2555963, 1, 0, 2555962, 1, 0, 2555961, 1, 0, 2555960, 1, 0, 2490423, 1, 0, 2490422, 1, 0, 2424886, 1, 0, 655366, 1, 0, 655365, 1, 0, 720901, 1, 0, 786436, 1, 0, 851972, 1, 0, 851971, 1, 0, 917507, 1, 0, 983043, 1, 0, 1048579, 1, 0, 1114114, 1, 0, 1179650, 1, 0, 1245186, 1, 0, 1310722, 1, 0, 1376258, 1, 0, 1441794, 1, 0, 1507330, 1, 0, 1572866, 1, 0, 1638402, 1, 0, 1703938, 1, 0, 1769474, 1, 0, 1835010, 1, 0, 1900546, 1, 0, 1966082, 1, 0, 2031619, 1, 0, 2031620, 1, 0, 2031621, 1, 0, 917559, 1, 0, 852023, 1, 0, 852022, 1, 0, 852021, 1, 0, 852020, 1, 0, 852019, 1, 0, 917555, 1, 0, 983091, 1, 0, 983090, 1, 0, 1048626, 1, 0, 1048627, 1, 0, 1048628, 1, 0, 1114164, 1, 0, 1114165, 1, 0, 1114166, 1, 0, 1048630, 1, 0, 1048631, 1, 0, 983095, 1, 0, 917560, 1, 0, 852024, 1, 0, 786488, 1, 0, 786489, 1, 0, 786490, 1, 0, 786491, 1, 0, 852027, 1, 0, 852028, 1, 0, 917564, 1, 0, 983100, 1, 0, 1048636, 1, 0, 1048635, 1, 0, 1048634, 1, 0, 1048633, 1, 0, 1048632, 1, 0, 983096, 1, 0, 786484, 1, 0, 720948, 1, 0, 655412, 1, 0, 655413, 1, 0, 589877, 1, 0, 524341, 1, 0, 458805, 1, 0, 458806, 1, 0, 393270, 1, 0, 393271, 1, 0, 327735, 1, 0, 327736, 1, 0, 327737, 1, 0, 393273, 1, 0, 458809, 1, 0, 458810, 1, 0, 524346, 1, 0, 589882, 1, 0, 655418, 1, 0, 720954, 1, 0, 2293771, 1, 0, 2359308, 1, 0, 2424845, 1, 0, 2490382, 1, 0, 2555919, 1, 0, 2555920, 1, 0, 2621456, 1, 0, 2621457, 1, 0, 2686994, 1, 0, 2752530, 1, 0, 2752531, 1, 0, 2818067, 1, 0, 2883603, 1, 0, 2883604, 1, 0)
+
+[node name="orbspawner" type="Node2D" parent="."]
 position = Vector2(576, 324)
-script = ExtResource("1_5wtgm")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("RectangleShape2D_23xa6")
-
-[node name="Polygon2D" type="Polygon2D" parent="Player"]
-material = SubResource("CanvasItemMaterial_kbig4")
-polygon = PackedVector2Array(-10, -10, 10, -10, 10, 10, -10, 10)
+script = ExtResource("4_m6vft")
