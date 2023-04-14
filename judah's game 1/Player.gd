@@ -13,7 +13,7 @@ func _process(delta):
 	
 	takeInput()
 	
-	velocity = move.normalized() * speed
+	velocity = move.normalized() * speed * delta
 	
 	move_and_slide()
 	
