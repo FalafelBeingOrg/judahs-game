@@ -13,11 +13,13 @@ func _process(delta):
 	timeSinceSpawn+=1
 	if timeSinceSpawn>=spawnTimer:
 		spawn()
-		print("spawn")
+		print("a")
 		timeSinceSpawn=0
 
+
 func spawn():
-	var scene = load("res://orb.tscn")
-	var orb = scene.instantiate()
+	var orb = load("res://orb.tscn").instantiate()
+	add_child(orb)
+	#var orb = scene.instantiate()
 	#random.randomize()
 	#orb.position = Vector2(random.randi_range(0,1151),random.randi_range(-647,0))
