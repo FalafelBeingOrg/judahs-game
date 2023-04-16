@@ -4,16 +4,11 @@
 [ext_resource type="Script" path="res://orb.gd" id="1_sgyfn"]
 [ext_resource type="Texture2D" uid="uid://c2c10137co7ny" path="res://light balls.png" id="2_inujq"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_638fv"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_6fdq4"]
 
 [node name="orb" type="Area2D"]
 position = Vector2(576, 324)
 script = ExtResource("1_sgyfn")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-show_behind_parent = true
-top_level = true
-shape = SubResource("CircleShape2D_638fv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_aoi45")
@@ -21,3 +16,7 @@ texture = ExtResource("1_aoi45")
 [node name="PointLight2D" type="PointLight2D" parent="Sprite2D"]
 shadow_enabled = true
 texture = ExtResource("2_inujq")
+texture_scale = 0.1
+
+[node name="collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6fdq4")
