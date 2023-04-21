@@ -1,7 +1,7 @@
 extends Node2D
 
 var random = RandomNumberGenerator.new()
-var spawnTimer = 100
+var spawnTimer = 500
 var timeSinceSpawn = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var balls = $PointLight2D
+@onready var collider = $CollisionShape2D
 
 var light = 1.5
 var speed = 100
@@ -12,6 +13,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+
+	
 	light -= 0.0004
 	balls.texture_scale = light
 	if light <= 0:
