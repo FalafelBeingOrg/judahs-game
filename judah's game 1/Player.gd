@@ -6,6 +6,7 @@ extends CharacterBody2D
 var light = 1.5
 var speed = 100
 var move = Vector2(0,0)
+var lightDecay = 0.0006
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -15,7 +16,7 @@ func _ready():
 func _process(delta):
 
 	
-	light -= 0.0004
+	light -= lightDecay
 	balls.texture_scale = light
 	if light <= 0:
 		get_tree().change_scene_to_file("res://start.tscn")
