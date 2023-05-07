@@ -8,16 +8,15 @@ func _ready():
 	print("hello")
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	if body_entered:
 		if overlaps_body(tilemap):
 			teleport()
 		if overlaps_body(player):
-			player.light += 0.1
+			player.light += 0.15
 			get_parent().spawn()
 			get_parent().remove_child(self)
+
 		
 func teleport():
 	position = Vector2(randi_range(0,1151),randi_range(0, 647))
