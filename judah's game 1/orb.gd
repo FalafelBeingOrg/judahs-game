@@ -15,7 +15,8 @@ func _process(delta):
 		if overlaps_body(tilemap):
 			teleport()
 		if overlaps_body(player):
-			player.light += 0.3
+			player.light += 0.1
+			get_parent().spawn()
 			get_parent().remove_child(self)
 		
 func teleport():
