@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cad0utrnd3dum"]
+[gd_scene load_steps=11 format=3 uid="uid://cad0utrnd3dum"]
 
 [ext_resource type="Texture2D" uid="uid://jcjcq3ssymgo" path="res://bg.png" id="1_7gr2t"]
 [ext_resource type="Texture2D" uid="uid://m0x7c3bxtay0" path="res://walls.png" id="2_ri5on"]
 [ext_resource type="PackedScene" uid="uid://xgtbjnta0t7m" path="res://player.tscn" id="2_wv8ud"]
 [ext_resource type="Script" path="res://TileMap.gd" id="4_cwmuv"]
 [ext_resource type="Script" path="res://orbspawner.gd" id="4_m6vft"]
+[ext_resource type="Script" path="res://Enemy.gd" id="6_bfxsr"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_4kufx"]
 vertices = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
@@ -49,3 +50,11 @@ script = ExtResource("4_cwmuv")
 
 [node name="orbspawner" type="Node2D" parent="."]
 script = ExtResource("4_m6vft")
+
+[node name="Enemy" type="Node2D" parent="."]
+position = Vector2(100, 100)
+script = ExtResource("6_bfxsr")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Enemy"]
